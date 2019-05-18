@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
+import { NgxSettingsUtils } from "./utils/ngx-settings.utils";
 
 @Injectable({
   providedIn: "root"
@@ -29,11 +30,12 @@ export class NgxSettingsService {
     return promise;
   }
 
-  get(key: string): any {
-    let value = this.settings[key];
+  get(key?: string): any {
+    let value = NgxSettingsUtils.getValueFromObject(key, this.settings);
     if (!value) {
       throw new Error("No key found with name: " + key);
     }
+
     return value;
   }
 }
