@@ -4,3 +4,4 @@
 
 export * from './lib/ngx-settings.module';
 export * from './lib/ngx-settings.service';
+export * from './lib/ngx-settings.pipe';

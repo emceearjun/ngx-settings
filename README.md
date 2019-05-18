@@ -7,9 +7,9 @@ ngx-settings uses JSON configuration to manage runtime dependencies post deploym
 npm install @ngx-settings --save
 ```
 
-## Usage
+## Import
 
-#### Component
+#### Module
 First step is to import `NgxSettingsModule` into your NgModule
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
@@ -37,21 +37,29 @@ export class AppModule { }
 #### Sample output from URL:
 ```json
 {
-  "userId": 1,
-  "id": 1,
-  "title": "delectus aut autem",
-  "completed": false
+  "apiKey": "abcd1234",
+  "credentials": {
+    "username": "johndoe",
+    "password": "pass"
+  }
 }
 ```
 
 #### Usage
-Inject `NgxSettingsService` into your component and use the `get` method by passing in the key:
+- Inject `NgxSettingsService` into the component class and use the `get` method by passing in the key:
 ```ts
 export class AppComponent {
-    settings: any;
+    apiKey: string;
+    username: string;
 
     constructor(private settingsService: NgxSettingsService) {
-        this.title = this.settingsService.get("title"); // Output: "delectus aut autem"
+        this.apiKey = this.settingsService.get("apiKey"); // Output: "abcd1234"
+        this.username = this.settingsService.get("credentials.username"); // Output: "johndoe"
     }
 }
+```
+- Use `NgxSettingsPipe` by name `settingsKey` in the HTML template:
+```html
+<div>{{"apiKey" | settingsKey}}</div><!-- Output: abcd1234 -->
+<div>{{"credentials.username" | settingsKey}}</div><!-- Output: johndoe -->
 ```

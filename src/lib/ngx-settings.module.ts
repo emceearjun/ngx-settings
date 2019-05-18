@@ -2,6 +2,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ModuleWithProviders } from "@angular/compiler/src/core";
 import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { NgxSettingsService } from "./ngx-settings.service";
+import { NgxSettingsPipe } from "./ngx-settings.pipe";
 
 export function getSettings(settingsService: NgxSettingsService) {
   let factory = () => settingsService.getSettings();
@@ -10,6 +11,7 @@ export function getSettings(settingsService: NgxSettingsService) {
 
 @NgModule({
   imports: [HttpClientModule],
+  declarations: [NgxSettingsPipe],
   providers: [
     NgxSettingsService,
     {
@@ -18,7 +20,8 @@ export function getSettings(settingsService: NgxSettingsService) {
       deps: [NgxSettingsService],
       multi: true
     }
-  ]
+  ],
+  exports: [NgxSettingsPipe]
 })
 export class NgxSettingsModule {
   static forRoot(appConfig: any): ModuleWithProviders {
