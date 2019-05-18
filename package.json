@@ -1,6 +1,6 @@
 {
   "name": "ngx-settings",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0"
@@ -11,6 +11,8 @@
   },
   "keywords": [
     "settings",
+    "config",
+    "configuration",
     "externalization",
     "angular"
   ],
