@@ -63,3 +63,16 @@ export class AppComponent {
 <div>{{"apiKey" | settingsKey}}</div><!-- Output: abcd1234 -->
 <div>{{"credentials.username" | settingsKey}}</div><!-- Output: johndoe -->
 ```
+- Provide a default value in case the actual property is not available for any reason:
+```ts
+export class AppComponent {
+    apiKey: string;
+
+    constructor(private settingsService: NgxSettingsService) {
+        this.apiKey = this.settingsService.get("apiKey", "myDefaultKey"); // Output: "myDefaultKey"
+    }
+}
+```
+```html
+<div>{{"apiKey" | settingsKey:"myDefaultKey"}}</div><!-- Output: myDefaultKey -->
+```
