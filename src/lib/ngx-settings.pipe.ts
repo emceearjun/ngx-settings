@@ -8,7 +8,7 @@ export class NgxSettingsPipe implements PipeTransform {
 
     constructor(private settingsService: NgxSettingsService) {}
 
-    transform(value: string, args: any) {
-        return this.settingsService.get(value);
+    transform(value: string, args: string) {
+        return this.settingsService.get(value, args);
     }
 }

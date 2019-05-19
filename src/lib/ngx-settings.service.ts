@@ -30,9 +30,12 @@ export class NgxSettingsService {
     return promise;
   }
 
-  get(key?: string): any {
+  get(key?: string, defaultValue?: any): any {
     let value = NgxSettingsUtils.getValueFromObject(key, this.settings);
     if (!value) {
+      if (defaultValue) {
+        return defaultValue;
+      }
       throw new Error("No key found with name: " + key);
     }
 
