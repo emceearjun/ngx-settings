@@ -4,7 +4,7 @@ ngx-settings uses JSON configuration to manage runtime dependencies post deploym
 
 ## Installation
 ```posh
-npm install @ngx-settings --save
+npm install ngx-settings --save
 ```
 
 ## Import
